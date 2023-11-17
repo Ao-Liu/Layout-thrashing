@@ -11,10 +11,10 @@ const Navbar = () => {
         <TouchBarBtn component={Link} to="/" variant="text" size="large" color="primary">
           Amazon
         </TouchBarBtn>
-        <TouchBarBtn component={Link} to="/nav1" variant="text" size="large" color="primary">
+        {/* <TouchBarBtn component={Link} to="/nav1" variant="text" size="large" color="primary">
           Cats
-        </TouchBarBtn>
-        <TouchBarBtn component={Link} to="/nav2" variant="text" size="large" color="primary">
+        </TouchBarBtn> */}
+        <TouchBarBtn component={Link} to="/cat" variant="text" size="large" color="primary">
           Cat
         </TouchBarBtn>
         {/* <TouchBarBtn component={Link} to="/nav3" variant="text" size="large" color="primary">

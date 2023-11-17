@@ -42,7 +42,7 @@ const AmazonPage = () => {
   };
 
   const handleButtonClick = () => {
-    const dbRef = ref(database, 'clicks/count');
+    const dbRef = ref(database, 'clicks/amazon');
     onValue(dbRef, (snapshot) => {
       const currentCount = snapshot.val() || 0;
       set(dbRef, currentCount + 1);
@@ -50,7 +50,7 @@ const AmazonPage = () => {
   };
 
   React.useEffect(() => {
-    const visitCountRef = ref(database, 'visits/count');
+    const visitCountRef = ref(database, 'visits/amazon');
     onValue(visitCountRef, (snapshot) => {
       const currentCount = snapshot.val() || 0;
       set(visitCountRef, currentCount + 1);

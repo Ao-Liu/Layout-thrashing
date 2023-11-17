@@ -13,8 +13,8 @@ function App() {
         <header className="App-header">
           <Routes>
             <Route exact path="/" element={<AmazonPage />} />
-            <Route path="/nav1" element={<CatsPage />} />
-            <Route path="/nav2" element={<CatPage />} />
+            {/* <Route path="/nav1" element={<CatsPage />} /> */}
+            <Route path="/cat" element={<CatPage />} />
             {/* <Route path="/nav3" element={<TemplatePage />} />
             <Route path="/nav4" element={<TemplatePage />} /> */}
           </Routes>

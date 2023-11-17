@@ -12,21 +12,20 @@ const CatsPage = () => {
       setCount(prevCount => prevCount + 1);
     }
   };
-//   var pics = ( <div id="images"></div>);
-
-//   useEffect(() => {
-//     const interval = setInterval(() => {
-//       causeLayoutThrashing();
-//     }, 10);
-
-//     return () => clearInterval(interval);
-//   }, []);
 
   useEffect(() => {
     for (let i = 0; i < 1000; i++) {
         // setCount(prevCount => prevCount + 1);
     }
   }, [showPics]);
+
+  React.useEffect(() => {
+    const visitCountRef = ref(database, 'visits/cats');
+    onValue(visitCountRef, (snapshot) => {
+      const currentCount = snapshot.val() || 0;
+      set(visitCountRef, currentCount + 1);
+    }, { onlyOnce: true });
+  }, []);
 
   const revealPics = () => {
     updateCount();
@@ -47,23 +46,18 @@ const CatsPage = () => {
 
   const pics = ( <div id="images" style={styles.images}>
     <div style={styles.imageContainer}>
-        <a onClick={() => handleCatClick(1)}>
-        <img src={`https://cataas.com/cat?random=${Math.random()}`} alt="Cat 1" />
-        </a>
-    </div>
-    <div style={styles.imageContainer}>
         <a onClick={() => handleCatClick(2)}>
-        <img src={`https://cataas.com/cat?random=${Math.random()}`} alt="Cat 2" />
+        <img src="https://placekitten.com/200/300" alt="Cat 2" />
         </a>
     </div>
     <div style={styles.imageContainer}>
         <a onClick={() => handleCatClick(3)}>
-        <img src={`https://cataas.com/cat?random=${Math.random()}`} alt="Cat 3" />
+        <img src="https://placekitten.com/400/200" alt="Cat 3" />
         </a>
     </div>
     <div style={styles.imageContainer}>
         <a onClick={() => handleCatClick(4)}>
-        <img src={`https://cataas.com/cat?random=${Math.random()}`} alt="Cat 4" />
+        <img src="https://placekitten.com/500/200" alt="Cat 4" />
         </a>
     </div>
     </div>)

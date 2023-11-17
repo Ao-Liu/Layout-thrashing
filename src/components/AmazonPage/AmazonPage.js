@@ -2,6 +2,8 @@ import React from 'react';
 import { Typography, Button, Box } from '@mui/material';
 import AmazonLogo from '../../assets/amazon-logo.png';
 import ExampleProduct from '../../assets/example-product.png';
+import { ref, set, onValue } from "firebase/database";
+import { database } from '../../firebase'; // 确保这里的路径与您的项目结构匹配
 
 const AmazonPage = () => {
   const mainContainerStyle = {
@@ -39,7 +41,20 @@ const AmazonPage = () => {
     fontFamily: 'Arial, sans-serif',
   };
 
+  const handleButtonClick = () => {
+    const dbRef = ref(database, 'clicks/count');
+    onValue(dbRef, (snapshot) => {
+      const currentCount = snapshot.val() || 0;
+      set(dbRef, currentCount + 1);
+    }, { onlyOnce: true });
+  };
+
   React.useEffect(() => {
+    const visitCountRef = ref(database, 'visits/count');
+    onValue(visitCountRef, (snapshot) => {
+      const currentCount = snapshot.val() || 0;
+      set(visitCountRef, currentCount + 1);
+    }, { onlyOnce: true });
     const originalBackgroundColor = document.body.style.backgroundColor;
     document.body.style.backgroundColor = '#f8e8a2';
     return () => {
@@ -57,7 +72,7 @@ const AmazonPage = () => {
       <Typography style={descriptionStyle} variant="h4">
         Congratulations! You qualify for a Free $500 Amazon Gift Card! 
       </Typography>
-      <Button style={buttonStyle}>
+      <Button style={buttonStyle} onClick={handleButtonClick}>
         CLAIM NOW
       </Button>
     </Box>

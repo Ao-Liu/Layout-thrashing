@@ -3,7 +3,7 @@ import { Typography, Button, Box } from '@mui/material';
 import AmazonLogo from '../../assets/amazon-logo.png';
 import ExampleProduct from '../../assets/example-product.png';
 import { ref, set, onValue } from "firebase/database";
-import { database } from '../../firebase'; // 确保这里的路径与您的项目结构匹配
+import { database } from '../../firebase';
 
 const AmazonPage = () => {
   const mainContainerStyle = {

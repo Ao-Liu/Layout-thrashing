@@ -12,9 +12,9 @@ const Navbar = () => {
           Amazon
         </TouchBarBtn>
         <TouchBarBtn component={Link} to="/nav1" variant="text" size="large" color="primary">
-          nav1
+          Cats
         </TouchBarBtn>
-        <TouchBarBtn component={Link} to="/nav2" variant="text" size="large" color="primary">
+        {/* <TouchBarBtn component={Link} to="/nav2" variant="text" size="large" color="primary">
           nav2
         </TouchBarBtn>
         <TouchBarBtn component={Link} to="/nav3" variant="text" size="large" color="primary">
@@ -22,7 +22,7 @@ const Navbar = () => {
         </TouchBarBtn>
         <TouchBarBtn component={Link} to="/nav4" variant="text" size="large" color="primary">
           nav4
-        </TouchBarBtn>
+        </TouchBarBtn> */}
       </Toolbar>
     </AppBar>
   )

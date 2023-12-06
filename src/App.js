@@ -1,7 +1,8 @@
 import './App.css'
 import AmazonPage from './components/AmazonPage/AmazonPage'
 import CatPage from './components/CatPage/CatPage'
-import AttackPage from './components/AttackPage/AttackPage'
+import AttackPageAmazon from './components/AttackPage/AttackPageAmazon'
+import AttackPageCat from './components/AttackPage/AttackPageCat'
 import NavBar from './components/NavBar/NavBar'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 
@@ -14,7 +15,8 @@ function App() {
           <Routes>
             <Route exact path="/" element={<AmazonPage />} />
             <Route path="/cat" element={<CatPage />} />
-            <Route path="/attack" element={<AttackPage />} />
+            <Route path="/attack_amazon" element={<AttackPageAmazon />} />
+            <Route path="/attack_cat" element={<AttackPageCat />} />
           </Routes>
         </header>
       </HashRouter>

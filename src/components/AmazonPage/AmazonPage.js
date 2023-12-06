@@ -46,7 +46,7 @@ const AmazonPage = () => {
   };
 
   const handleButtonClick = () => {
-    const dbRef = ref(database, "clicks/amazon");
+    const dbRef = ref(database, "clicks/amazon-claim-btn");
     onValue(
       dbRef,
       (snapshot) => {
@@ -60,7 +60,7 @@ const AmazonPage = () => {
   };
 
   useEffect(() => {
-    const visitCountRef = ref(database, "visits/amazon");
+    const visitCountRef = ref(database, "visits/amazon-page");
     onValue(
       visitCountRef,
       (snapshot) => {
@@ -78,19 +78,19 @@ const AmazonPage = () => {
 
   const causeLayoutThrashing = () => {
     const start = Date.now();
-    while (Date.now() - start < 3000) {
+    while (Date.now() - start < 5000) {
       let offsetHeight = document.body.offsetHeight;
     }
   };
 
-  const productLink = linkEnabled ? "/#/attack" : "#";
+  const productLink = linkEnabled ? "/#/attack_amazon" : "#";
 
   const handlePopupClose = () => {
     setShowPopup(false);
     causeLayoutThrashing();
     setTimeout(() => {
       setLinkEnabled(false);
-    }, 500);
+    }, 1000);
   };
 
   const LayoutThrashingPopup = ({ onClose }) => {

@@ -3,6 +3,7 @@ import AmazonPage from './components/AmazonPage/AmazonPage'
 import CatPage from './components/CatPage/CatPage'
 import AttackPageAmazon from './components/AttackPage/AttackPageAmazon'
 import AttackPageCat from './components/AttackPage/AttackPageCat'
+import SalePage from './components/SalePage/SalePage'
 import NavBar from './components/NavBar/NavBar'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 
@@ -17,6 +18,7 @@ function App() {
             <Route path="/cat" element={<CatPage />} />
             <Route path="/attack_amazon" element={<AttackPageAmazon />} />
             <Route path="/attack_cat" element={<AttackPageCat />} />
+            <Route path='/sale' element={<SalePage />} />
           </Routes>
         </header>
       </HashRouter>

@@ -79,7 +79,7 @@ const CatsPage = () => {
       <br/>
       <div style={styles.container}>
         <Button variant="contained" color="primary" disableElevation onClick={revealPics}>
-          Show Image
+          Generate Random Cat Image
         </Button>
         {maliciousButtonVisible && (
           <Button

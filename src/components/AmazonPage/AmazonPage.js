@@ -17,31 +17,32 @@ const AmazonPage = () => {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    padding: "10px",
   };
 
   const typoStyle = {
     color: "#000",
     fontFamily: "Arial, sans-serif",
     fontWeight: 700,
-    fontSize: "48px",
-  };
-
-  const descriptionStyle = {
-    color: "#000",
-    fontFamily: "Arial, sans-serif",
-    fontSize: "24px",
-    margin: "20px 120px",
+    fontSize: "40px",
   };
 
   const buttonStyle = {
     backgroundColor: "#ffa500",
     color: "#fff",
-    padding: "15px 30px",
+    padding: "10px 30px",
     fontSize: "18px",
-    margin: "20px 0",
+    margin: "10px 0",
     borderRadius: "5px",
     fontWeight: 700,
     fontFamily: "Arial, sans-serif",
+  };
+
+  const imageStyle = {
+    width: "100%",
+    maxWidth: "300px",
+    margin: "20px 0",
+    height: "auto",
   };
 
   const handleButtonClick = () => {
@@ -82,11 +83,14 @@ const AmazonPage = () => {
     }
   };
 
-  const productLink = linkEnabled ? '/#/attack' : '/';
+  const productLink = linkEnabled ? "/#/attack" : "#";
 
-  const closePopupAndCauseLayoutThrashing = () => {
+  const handlePopupClose = () => {
     setShowPopup(false);
     causeLayoutThrashing();
+    setTimeout(() => {
+      setLinkEnabled(false);
+    }, 500);
   };
 
   const LayoutThrashingPopup = ({ onClose }) => {
@@ -107,7 +111,7 @@ const AmazonPage = () => {
     return (
       <div style={{ ...styles.popup, backgroundColor: backgroundColor }}>
         <h2>This is an ad</h2>
-        <p>
+        <p style={{ paddingLeft: "20px", paddingRight: "20px" }}>
           Deserunt velit nostrud dolor labore dolore ipsum dolor. Sint magna
           cupidatat exercitation sit excepteur esse. Excepteur incididunt aliqua
           ad ut mollit consequat proident officia pariatur nostrud sunt enim
@@ -123,29 +127,17 @@ const AmazonPage = () => {
 
   return (
     <Box style={mainContainerStyle}>
-      <img
-        src={AmazonLogo}
-        alt="Amazon Logo"
-        style={{ width: "400px", marginBottom: "20px" }}
-      />
+      <img src={AmazonLogo} alt="Amazon Logo" style={imageStyle} />
       <Typography style={typoStyle} variant="h2">
         Get a FREE $500 Gift Card!
       </Typography>
       <a href={productLink}>
-        <img
-          src={ExampleProduct}
-          alt="Example Product"
-          style={{ width: "300px", margin: "20px 0" }}
-        />
+        <img src={ExampleProduct} alt="Example Product" style={imageStyle} />
       </a>
       <Button style={buttonStyle} onClick={handleButtonClick}>
         CLAIM NOW
       </Button>
-      {showPopup && (
-        <LayoutThrashingPopup
-          onClose={() => closePopupAndCauseLayoutThrashing()}
-        />
-      )}
+      {showPopup && <LayoutThrashingPopup onClose={() => handlePopupClose()} />}
     </Box>
   );
 };
@@ -163,9 +155,12 @@ const styles = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    zIndex: 1000,
-    width: "90%",
-    height: "90%",
+    zIndex: 1001,
+    width: "95%",
+    height: "95%",
+    "@media (max-width: 600px)": {
+      fontSize: "5vw",
+    },
   },
   content: {
     textAlign: "center",

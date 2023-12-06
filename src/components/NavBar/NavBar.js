@@ -1,31 +1,54 @@
-import React from 'react'
-import AppBar from '@mui/material/AppBar'
-import Toolbar from '@mui/material/Toolbar'
-import { Link } from 'react-router-dom'
-import { TouchBarBtn } from './styles'
+import React, { useState } from "react";
+import IconButton from "@mui/material/IconButton";
+import MenuIcon from "@mui/icons-material/Menu";
+import Drawer from "@mui/material/Drawer";
+import { Link } from 'react-router-dom';
+import { TouchBarBtn } from './styles';
+import catIcon from '../../assets/cat-nav.png';
+import amazonIcon from '../../assets/amazon-nav.png';
 
 const Navbar = () => {
-  return (
-    <AppBar elevation={0} position="static" color="inherit">
-      <Toolbar>
-        <TouchBarBtn component={Link} to="/" variant="text" size="large" color="primary">
-          Amazon
-        </TouchBarBtn>
-        {/* <TouchBarBtn component={Link} to="/nav1" variant="text" size="large" color="primary">
-          Cats
-        </TouchBarBtn> */}
-        <TouchBarBtn component={Link} to="/cat" variant="text" size="large" color="primary">
-          Cat
-        </TouchBarBtn>
-        {/* <TouchBarBtn component={Link} to="/nav3" variant="text" size="large" color="primary">
-          nav3
-        </TouchBarBtn>
-        <TouchBarBtn component={Link} to="/nav4" variant="text" size="large" color="primary">
-          nav4
-        </TouchBarBtn> */}
-      </Toolbar>
-    </AppBar>
-  )
-}
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
-export default Navbar
+  const toggleDrawer = (open) => (event) => {
+    if (
+      event.type === "keydown" &&
+      (event.key === "Tab" || event.key === "Shift")
+    ) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
+
+  const drawerContent = (
+    <div onClick={toggleDrawer(false)} onKeyDown={toggleDrawer(false)}>
+      <TouchBarBtn component={Link} to="/" variant="text" size="large" color="primary">
+        <img src={amazonIcon} alt="Amazon" style={{ maxWidth: '50px', marginRight: '8px' }} />
+        Amazon
+      </TouchBarBtn>
+      <TouchBarBtn component={Link} to="/cat" variant="text" size="large" color="primary">
+        <img src={catIcon} alt="Cat" style={{ maxWidth: '50px', marginRight: '8px' }} />
+        Cat
+      </TouchBarBtn>
+    </div>
+  );
+
+  return (
+    <div>
+      <IconButton
+        edge="start"
+        color="inherit"
+        aria-label="menu"
+        onClick={toggleDrawer(true)}
+        style={{ position: "fixed", top: 10, left: 20, zIndex: 1000 }}
+      >
+        <MenuIcon />
+      </IconButton>
+      <Drawer anchor="top" open={drawerOpen} onClose={toggleDrawer(false)}>
+        {drawerContent}
+      </Drawer>
+    </div>
+  );
+};
+
+export default Navbar;

@@ -1,25 +1,21 @@
 import './App.css'
 import AmazonPage from './components/AmazonPage/AmazonPage'
-import CatsPage from './components/CatsPage/CatsPage'
 import CatPage from './components/CatPage/CatPage'
 import NavBar from './components/NavBar/NavBar'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <NavBar />
         <header className="App-header">
           <Routes>
             <Route exact path="/" element={<AmazonPage />} />
-            {/* <Route path="/nav1" element={<CatsPage />} /> */}
             <Route path="/cat" element={<CatPage />} />
-            {/* <Route path="/nav3" element={<TemplatePage />} />
-            <Route path="/nav4" element={<TemplatePage />} /> */}
           </Routes>
         </header>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   )
 }
